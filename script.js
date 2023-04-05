@@ -11,6 +11,8 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
+const nav = document.querySelector('.nav');
+const navLogo = document.querySelector('.nav__logo');
 const navLinks = document.querySelector('.nav__links');
 const navLink = document.querySelectorAll('.nav__link');
 
@@ -131,7 +133,26 @@ operationsTabContainer.addEventListener('click', function(e) {
 })
 
 
+//FADING MENU ANIMATHION
+const opacityFunc = function(e) {
 
+  if (e.target.classList.contains('nav__link')) {
+
+    const link = e.target;
+    const siblings = e.target.closest('.nav').querySelectorAll('.nav__link');
+    const logo = e.target.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) {
+        el.style.opacity = this;
+      }
+      logo.style.opacity = this;
+    })
+  }
+} 
+
+nav.addEventListener('mouseover', opacityFunc.bind('0.5'))
+nav.addEventListener('mouseout', opacityFunc.bind('1'))
 
 
 
